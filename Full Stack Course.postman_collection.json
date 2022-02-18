@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "8853c166-0ba6-4783-8fdc-ab5c257f7cfa",
+		"name": "Full Stack Course",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Assignment 1",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n  addUser(username:\"admin3\",firstname:\"Sophia\",lastname:\"Duncan\",email:\"sophia.duncan@gmail.com\",password:\"123456\",type:ADMIN){\r\n    id\r\n    username\r\n    firstname\r\n    lastname\r\n    email\r\n    password\r\n    type\r\n  }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n  login(username: \"user4\", password: \"123456\")\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n  login(username: \"admin3\", password: \"123456\")\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Listing",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYyMGZhNDM3YWFmNmZjODY4Y2RjOTM1MCIsInVzZXJuYW1lIjoiYWRtaW4zIiwiZmlyc3RuYW1lIjoiU29waGlhIiwibGFzdG5hbWUiOiJEdW5jYW4iLCJlbWFpbCI6InNvcGhpYS5kdW5jYW5AZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTYiLCJ0eXBlIjoiQURNSU4iLCJfX3YiOjB9LCJpYXQiOjE2NDUxOTMxODMsImV4cCI6MTY0NTI3OTU4Mywic3ViIjoiNjIwZmE0MzdhYWY2ZmM4NjhjZGM5MzUwIn0.OgKROSfiFSu6wK_eAVD99lwi6hxVLGaNAaOMJvAPmpo",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n    addListing(\r\n        title: \"Hotel Hilton Toronto\",\r\n        description: \"Near to Airport\",\r\n        street: \"123 Airport Rd\",\r\n        city: \"Toronto\",\r\n        postal_code:\"A1B 2C3\",\r\n        price: 49,\r\n        email: \"contact@hilton.com\",\r\n        username: \"admin3\"\r\n    ){\r\n        id\r\n        title\r\n        description\r\n        street\r\n        city\r\n        postal_code\r\n        price\r\n        email\r\n        username\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Listings by Username",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n  getListingsByAdmin(username:\"admin3\"){\r\n    id\r\n    title\r\n    description\r\n    street\r\n    city\r\n    postal_code\r\n    price\r\n    email\r\n    username\r\n  }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Listings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n  getListingsByName(title:\"Hilton\"){\r\n    id\r\n    title\r\n    description\r\n    street\r\n    city\r\n    postal_code\r\n    price\r\n    email\r\n    username\r\n  },\r\n  getListingsByCity(city:\"Toronto\"){\r\n    id\r\n    title\r\n    description\r\n    street\r\n    city\r\n    postal_code\r\n    price\r\n    email\r\n    username\r\n  }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Listings",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYyMGZhNDM3YWFmNmZjODY4Y2RjOTM1MCIsInVzZXJuYW1lIjoiYWRtaW4zIiwiZmlyc3RuYW1lIjoiU29waGlhIiwibGFzdG5hbWUiOiJEdW5jYW4iLCJlbWFpbCI6InNvcGhpYS5kdW5jYW5AZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTYiLCJ0eXBlIjoiQURNSU4iLCJfX3YiOjB9LCJpYXQiOjE2NDUxOTMxODMsImV4cCI6MTY0NTI3OTU4Mywic3ViIjoiNjIwZmE0MzdhYWY2ZmM4NjhjZGM5MzUwIn0.OgKROSfiFSu6wK_eAVD99lwi6hxVLGaNAaOMJvAPmpo",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n  getListingsByLoginedAdmin{\r\n    id\r\n    title\r\n    description\r\n    street\r\n    city\r\n    postal_code\r\n    price\r\n    email\r\n    username\r\n  },\r\n  getListingsByCity(city:\"Toronto\"){\r\n    id\r\n    title\r\n    description\r\n    street\r\n    city\r\n    postal_code\r\n    price\r\n    email\r\n    username\r\n  }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYyMGY4YmM4OTE0ZWZlYWQ5OTE1YTU1YyIsInVzZXJuYW1lIjoidXNlcjEiLCJmaXJzdG5hbWUiOiJKb2huIiwibGFzdG5hbWUiOiJEb2UiLCJlbWFpbCI6ImpvaG4uZG9lQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTIzNDU2IiwidHlwZSI6IlVTRVIiLCJfX3YiOjB9LCJpYXQiOjE2NDUxOTMzMjksImV4cCI6MTY0NTI3OTcyOSwic3ViIjoiNjIwZjhiYzg5MTRlZmVhZDk5MTVhNTVjIn0.Jl4oRBWKz1_VLoPoRWI7_1Wjnk6O2KPksDd4j_x5euU",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n    addBooking(\r\n        listing_id:\"620fa7f76c98d33696f014c5\",\r\n        booking_date:\"2022-02-01T11:00:00\",\r\n        booking_start:\"2022-03-01T12:00:00\",\r\n        booking_end:\"2022-03-04T12:00:00\",\r\n    ){\r\n        listing_id\r\n        booking_date\r\n        booking_start\r\n        booking_end\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Bookings",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYyMGY4YmM4OTE0ZWZlYWQ5OTE1YTU1YyIsInVzZXJuYW1lIjoidXNlcjEiLCJmaXJzdG5hbWUiOiJKb2huIiwibGFzdG5hbWUiOiJEb2UiLCJlbWFpbCI6ImpvaG4uZG9lQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTIzNDU2IiwidHlwZSI6IlVTRVIiLCJfX3YiOjB9LCJpYXQiOjE2NDUxOTMzMjksImV4cCI6MTY0NTI3OTcyOSwic3ViIjoiNjIwZjhiYzg5MTRlZmVhZDk5MTVhNTVjIn0.Jl4oRBWKz1_VLoPoRWI7_1Wjnk6O2KPksDd4j_x5euU",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n    getBookingByLoginedUser{\r\n        listing_id\r\n        booking_date\r\n        booking_start\r\n        booking_end\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
