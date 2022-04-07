@@ -39,8 +39,7 @@ exports.typeDefs = gql`
     type Query {
         me: User!
         getBookingByLoginedUser: [Booking]
-        getListingsByAdmin(username: String!): [Listing]
-        getListingsByLoginedAdmin: [Listing]
+        getListingsByAdmin: [Listing]
         getListingsByName(title: String!): [Listing]
         getListingsByCity(city: String!): [Listing]
     }
@@ -48,7 +47,7 @@ exports.typeDefs = gql`
     type Mutation {
         addUser(username: String!, firstname: String!, lastname: String!, email: String!, password: String!, type: UserRole!): User
         login(username: String!, password: String!): String
-        addListing(title: String!, description: String!, street: String!, city: String!, postal_code: String!, price: Float!, email: String!, username: String!): Listing
+        addListing(title: String!, description: String!, street: String!, city: String!, postal_code: String!, price: Float!, email: String!): Listing
         addBooking(listing_id: ID!, booking_date: String!, booking_start: String!, booking_end: String!): Booking
     }
 `;
